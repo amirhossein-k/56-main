@@ -1,0 +1,36 @@
+.image-slider-top{
+    padding-top:13px;
+    
+.each-slide-child{
+             display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+//   height: 250px;
+        }
+}
+
+.details{
+  background-color:#ccc;
+  margin: 24px;
+  .row-child-detail{
+        padding: 5px;
+     background-color: #fbfbfb;
+    .col-child-detail{
+       
+       &.item{
+       background-color: #0e0d0d;
+    padding: 5px;
+    color: white;
+    }  
+       &.value{
+          background-color: rgb(16 33 54 / 87%);
+    padding: 5px;
+    color: white;
+    }  
+    }
+    &:hover{
+      background-color:#f9fdff36;
+    }
+  }
+}
