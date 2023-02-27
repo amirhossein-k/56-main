@@ -92,10 +92,10 @@ const Search = ({
       })()} */}
 
 
-
+{/* 
       <Col xl={2} md={2} sm={2} className="justify coll">
         <button className="button fixed">Search</button>
-      </Col>
+      </Col> */}
     </>
   );
 };

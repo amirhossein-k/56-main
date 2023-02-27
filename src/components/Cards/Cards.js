@@ -102,7 +102,7 @@ const Cards = ({ cardrun, setCardrun, Search }) => {
                   variant="top"
                   alt=""
                   src={`${item.pic[0]}`}
-                  style={{ height: "-webkit-fill-available" }}
+                  style={{ height: "240px" }}
                 />
                 <Card.Title className="name">{item.namecar}</Card.Title>
 

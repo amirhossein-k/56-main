@@ -1,5 +1,5 @@
 .pruduct {
-  width: 350px;
+  width: 300px;
   height: 370px;
   margin: 0 5px;
   background-color: rgb(255, 255, 255);
@@ -79,7 +79,7 @@ catagory img {
 
 @media screen and (max-width: 685px) {
   .pruduct {
-    width: 415px;
+    width: 350px;
     height: auto;
   }
 }
@@ -119,12 +119,12 @@ catagory img {
     height: auto;
   }
 }
-@media screen and (min-width: 1108px) and (max-width: 1145px) {
+/* @media screen and (min-width: 1108px) and (max-width: 1145px) {
   .pruduct {
     width: 340px;
     height: auto;
   }
-}
+} */
 @media screen and (min-width: 1203px) and (max-width: 1250px) {
   .pruduct {
     width: 267px;
