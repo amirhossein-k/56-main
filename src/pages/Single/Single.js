@@ -2,7 +2,7 @@ import "./single.scss";
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/Dashboard/sidebar/Sidebar";
 import HeaderChild from "../../components/Header/HeaderChild";
-import { Fade } from "react-slideshow-image";
+import { Fade,Slide  } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -78,18 +78,18 @@ const Single = ({ cardrun, setCardrun }) => {
     <Container fluid className="gx-0">
       <HeaderChild />
       <Row className="image-slider-top">
-        <Fade>
+        <Slide>
           {success === true ? (
             pics.map((item, index) => {
               console.log(datas, "datas");
               return (
-                <div className="each-slide" key={index}>
+                <div className="each-slide" key={`${item}`}>
                   <div className="each-slide-child">
                     <img
                       src={item}
                       alt=""
                       className="img-sidebar"
-                      key={index}
+                      // key={index}
                     />
                   </div>
                 </div>
@@ -98,17 +98,17 @@ const Single = ({ cardrun, setCardrun }) => {
           ) : (
             <div className="each-slide" key={images[0]}>
               <div className="each-slide-child">
-                <img
+                {/* <img
                   src={images[0]}
                   alt=""
                   className="img-sidebar"
                   key={images[0]}
-                />
+                /> */}
                 <p>خالی</p>
               </div>
             </div>
           )}
-        </Fade>
+        </Slide>
       </Row>
       <Row className="details">
         {success &&
@@ -158,7 +158,7 @@ const Single = ({ cardrun, setCardrun }) => {
                 item === "_id" ||
                 item === "__v" ||
                 item === "id" ? null : (
-                  <Col className="col-child-detail value" key={index}>
+                  <Col className="col-child-detail value" >
                     {(() => {
                       switch (item) {
                         case "date":

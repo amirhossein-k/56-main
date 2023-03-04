@@ -58,7 +58,7 @@ const Cards = ({ cardrun, setCardrun, Search }) => {
   console.log(product, "product");
   return (
     <>
-      <Row className="justify-content-start align-items-center g-2 p-3 shadow mt-2 mb-2 gx-0">
+      <Row className="justify-content-center align-items-center d-flex gap-3 p-3 shadow mt-2 mb-2 gx-0">
         <Search
           setSearchInput={setSearchInput}
           searchResult={searchResult}

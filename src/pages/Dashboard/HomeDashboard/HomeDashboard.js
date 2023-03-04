@@ -15,14 +15,24 @@ import { listProductAction } from "../../../actions/productActions";
 ////////////////
 
 const HomeDashboard = ({ setCardrun, cardrun }) => {
+
+  const [amountcar,setAmountcar]=useState(0)
+ 
+  const [amountorder,setAmountorder]=useState(0)
+  const [amountorderr,setAmountorderr]=useState([])
+  const [amountearing,setAmountearing]=useState(0)
+  const [amountbalance,setAmountbalance]=useState(0)
+
   useEffect(() => {
     console.log(cardrun, "dashboard");
     setCardrun(true);
+  
   }, []);
   useEffect(() => {
     if (cardrun === true) {
       dispatch(listProductAction());
       setCardrun(false);
+      
     }
   }, [cardrun]);
   const dispatch = useDispatch();
@@ -33,6 +43,33 @@ const HomeDashboard = ({ setCardrun, cardrun }) => {
   //   dispatch(listProductAction());
   // }, []);
   // useEffect(() => {}, []);
+  console.log(product,'ooo')
+  var count =0;
+  var countsold=0;
+  var countearn=0;
+  if(product){
+    product.map(item=>{
+    
+      for(const[key,value] of Object.entries(item)){
+        
+          if(key==='status'){
+            if(value==="sold"){
+              countsold+=1
+              
+
+            }
+          }
+          
+          
+      }
+    
+     
+
+      
+    })
+
+   
+  }
 
   return (
     <Container
@@ -68,18 +105,18 @@ const HomeDashboard = ({ setCardrun, cardrun }) => {
             {/* <Navbar /> */}
             <div className="widgets row">
               <Col md={6} lg={3} className="fix-col-md-6">
-                <Widgets type="user" />
+                <Widgets type="user" amountcar={amountcar} count={count}/>
               </Col>
               <Col md={6} lg={3} className="fix-col-md-6">
                 {" "}
-                <Widgets type="order" />
+                <Widgets type="order" amountorder={amountorder} countsold={countsold} />
               </Col>
               <Col md={6} lg={3} className="fix-col-md-6">
-                <Widgets type="erarning" />
+                <Widgets type="erarning" amountearing={amountearing} countearn={countearn} />
               </Col>
               <Col md={6} lg={3} className="fix-col-md-6">
                 {" "}
-                <Widgets type="balance" />
+                <Widgets type="balance" amountbalance={amountbalance}/>
               </Col>
             </div>
             {/* //charts className */}

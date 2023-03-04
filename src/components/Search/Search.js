@@ -36,7 +36,7 @@ const Search = ({
 
   return (
     <>
-      <Col xl={2} md={2} sm={2} className="justify coll">
+      <Col xl={2} md={2} sm={2} className=" coll-search">
         {/* <InputModule searchInput={searchInput} handleSearch={handleSearch}>keyword</InputModule> */}
         <input
           id="carname"
@@ -47,8 +47,11 @@ const Search = ({
           // onChange={e=>setCarname(e.target.value)}
           onChange={(e) => setCarname(e.target.value)}
         />
+        <span className="effect-coll-search">
+          <i></i>
+        </span>
       </Col>
-      <Col xl={2} md={2} sm={2} className="justify coll">
+      <Col xl={2} md={2} sm={2} className=" coll-search">
         <input
           id="factory"
           className="inputstyle"
@@ -57,6 +60,9 @@ const Search = ({
           value={factory}
           onChange={(e) => setFactory(e.target.value)}
         />
+        <span className="effect-coll-search">
+          <i></i>
+        </span>
       </Col>
       {/* <Col xl={2} md={2} sm={2} className="justify coll">
         <input
@@ -76,7 +82,7 @@ const Search = ({
           onChange={e=>setBuild(e.target.value)}
         />
       </Col> */}
-      <Col xl={2} md={2} sm={2} className="justify coll">
+      <Col xl={2} md={2} sm={2} className="coll-search">
       <input
           className="inputstyle"
           type="text"
@@ -84,6 +90,9 @@ const Search = ({
           value={price}
           onChange={e=>setPrice(e.target.value)}
         />
+        <span className="effect-coll-search">
+          <i></i>
+        </span>
       </Col>
 
       {/* {(() => {

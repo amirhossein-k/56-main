@@ -4,18 +4,19 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-const Widgets = ({ type }) => {
+const Widgets = ({ type,amountcar,amountorder,amountearing,amountbalance,count,countsold,countearn }) => {
   let data;
   ////
-  const amount = 100;
+  // const amount = 100;
   const diff = 20;
   ////
   switch (type) {
     case "user":
       data = {
-        title: "USERS",
+        title: "ماشین های موجود",
         isMoney: false,
-        link: "See all Users",
+        link: "مشاهده کامل",
+        amount: count,
         icon: (
           <PersonOutlineIcon
             className="icon"
@@ -26,9 +27,10 @@ const Widgets = ({ type }) => {
       break;
     case "order":
       data = {
-        title: "ORDERS",
+        title: "تعداد فروخته شده ها",
         isMoney: false,
-        link: "View all Orders",
+        link: "مشاهده کامل",
+        amount: countsold,
         icon: (
           <ShoppingCartIcon
             className="icon"
@@ -39,9 +41,10 @@ const Widgets = ({ type }) => {
       break;
     case "erarning":
       data = {
-        title: "ERARNING",
+        title: "درامد از فروش",
         isMoney: true,
-        link: "View net Erarnings",
+        link: "مشاهده کل",
+        amount:countearn,
         icon: (
           <MonetizationOnIcon
             className="icon"
@@ -52,9 +55,10 @@ const Widgets = ({ type }) => {
       break;
     case "balance":
       data = {
-        title: "BALANCE",
+        title: "مقدار کومیسیون",
         isMoney: true,
-        link: "See Details",
+        link: "مشاهده کامل",
+        amount:amountbalance,
         icon: (
           <AccountBalanceWalletIcon
             className="icon"
@@ -75,7 +79,7 @@ const Widgets = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {data.isMoney && "$"} {data.amount}
         </span>
         <span className="link">{data.link}</span>
       </div>

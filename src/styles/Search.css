@@ -34,6 +34,15 @@
   box-shadow: 0 0 0 0.25rem rgb(140 163 197 / 25%);
 }
 
+/* .coll-search-parent{
+
+} */
+
+.coll-search{
+  position: relative;
+}
+
+
 /* @media screen and (min-width: 996px) and (max-width: 1247px) {
   .coll {
     flex: 0 0 6% !important;
