@@ -16,6 +16,20 @@ import { listProductAction } from "../../../actions/productActions";
 
 const HomeDashboard = ({ setCardrun, cardrun }) => {
 
+  let dates= new Date()
+  let yearcurrent = dates.toJSON().slice(0,5);
+  let datecurrentmonth = dates.toJSON().slice(0,7);
+  let datedaycurrent =dates.toJSON().slice(0,10)
+  let beforemonth = Number(datecurrentmonth.slice(5,7)) -1
+  let beforemonthcurrent;
+  if(beforemonth<10){
+    beforemonthcurrent = yearcurrent + '0' + String(beforemonth)
+  }else{
+    beforemonthcurrent = yearcurrent  + String(beforemonth)
+  }
+  console.log(beforemonthcurrent,'befo')
+  
+  
   const [amountcar,setAmountcar]=useState(0)
  
   const [amountorder,setAmountorder]=useState(0)
@@ -44,30 +58,70 @@ const HomeDashboard = ({ setCardrun, cardrun }) => {
   // }, []);
   // useEffect(() => {}, []);
   console.log(product,'ooo')
-  var count =0;
-  var countsold=0;
-  var countearn=0;
+  var approved =[];
+  var totalapproved=0;
+
+  let sold = []
+  let totalsoldcost = []
+  let totalsold =0
+
+  let totaldate = []
+  let filtermonth=[];
+  let costmonth = 0;
+  let filterday =  [];
+  let costday = 0;
+  let filterbeforemonth=  [];
+  let costbeforemonth= 0;
+  
   if(product){
-    product.map(item=>{
-    
-      for(const[key,value] of Object.entries(item)){
+    for(let i=0; i< product.length; i++){
+      if(product[i].status=== 'sold'){
+        sold.push(product[i])
+        // console.log(sold)
         
-          if(key==='status'){
-            if(value==="sold"){
-              countsold+=1
-              
-
-            }
-          }
-          
-          
       }
-    
-     
-
+      if(product[i].status === "approved"){
+        approved.push(product[i])
+       
+      }
+      if(product[i].date.slice(0,7) === datecurrentmonth){
+        filtermonth.push(product[i])
+      }
+      if(product[i].date.slice(0,10) === datedaycurrent){
+        filterday.push(product[i])
+      }
+      if(product[i].date.slice(0,7) === beforemonthcurrent){
+        filterbeforemonth.push(product[i])
+      }
       
-    })
+    }
+    for(let j=0;j<sold.length;j++){
+      totalsoldcost+=Number(sold[j].price)
+      totalsold += 1
+    }
+   
+    for(let j=0;j<approved.length;j++){
+      totalapproved+= 1
+    }
 
+    for(let j=0;j<product.length;j++){
+      totaldate.push(product[j].date)
+
+    }
+   for(let j=0;j<filtermonth.length;j++){
+      costmonth += Number(filtermonth[j].price)
+   }
+   for(let j=0;j<filterday.length;j++){
+    costday += Number(filterday[j].price)
+   }
+   for(let j=0;j<filterbeforemonth.length;j++){
+    costbeforemonth += Number(filterbeforemonth[j].price)
+   }
+
+    
+    console.log(filtermonth,'filter')
+    console.log(datecurrentmonth,'current')
+   
    
   }
 
@@ -105,14 +159,14 @@ const HomeDashboard = ({ setCardrun, cardrun }) => {
             {/* <Navbar /> */}
             <div className="widgets row">
               <Col md={6} lg={3} className="fix-col-md-6">
-                <Widgets type="user" amountcar={amountcar} count={count}/>
+                <Widgets type="user" amountcar={amountcar} totalapproved={totalapproved}/>
               </Col>
               <Col md={6} lg={3} className="fix-col-md-6">
                 {" "}
-                <Widgets type="order" amountorder={amountorder} countsold={countsold} />
+                <Widgets type="order" amountorder={amountorder} totalsold={totalsold} />
               </Col>
               <Col md={6} lg={3} className="fix-col-md-6">
-                <Widgets type="erarning" amountearing={amountearing} countearn={countearn} />
+                <Widgets type="erarning" amountearing={amountearing} totalsoldcost={totalsoldcost} />
               </Col>
               <Col md={6} lg={3} className="fix-col-md-6">
                 {" "}
@@ -122,7 +176,7 @@ const HomeDashboard = ({ setCardrun, cardrun }) => {
             {/* //charts className */}
             <div className="  row ">
               <Col xs={12} sm={11} md={4} className="sm-fix">
-                <Featured />
+                <Featured costmonth={costmonth} costday={costday} costbeforemonth={costbeforemonth}/>
               </Col>
               <Col
                 xs={12}

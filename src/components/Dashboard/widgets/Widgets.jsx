@@ -4,7 +4,7 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-const Widgets = ({ type,amountcar,amountorder,amountearing,amountbalance,count,countsold,countearn }) => {
+const Widgets = ({ type,amountcar,amountorder,amountearing,amountbalance,totalapproved,totalsold,totalsoldcost }) => {
   let data;
   ////
   // const amount = 100;
@@ -16,7 +16,7 @@ const Widgets = ({ type,amountcar,amountorder,amountearing,amountbalance,count,c
         title: "ماشین های موجود",
         isMoney: false,
         link: "مشاهده کامل",
-        amount: count,
+        amount: totalapproved,
         icon: (
           <PersonOutlineIcon
             className="icon"
@@ -30,7 +30,7 @@ const Widgets = ({ type,amountcar,amountorder,amountearing,amountbalance,count,c
         title: "تعداد فروخته شده ها",
         isMoney: false,
         link: "مشاهده کامل",
-        amount: countsold,
+        amount: totalsold,
         icon: (
           <ShoppingCartIcon
             className="icon"
@@ -44,7 +44,7 @@ const Widgets = ({ type,amountcar,amountorder,amountearing,amountbalance,count,c
         title: "درامد از فروش",
         isMoney: true,
         link: "مشاهده کل",
-        amount:countearn,
+        amount:totalsoldcost,
         icon: (
           <MonetizationOnIcon
             className="icon"

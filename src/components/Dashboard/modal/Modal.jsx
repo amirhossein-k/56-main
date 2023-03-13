@@ -73,7 +73,7 @@ const Modal = ({
       })
         .then((res) => res.json())
         .then((data) => {
-          setPic(data.url.toString());
+          setPic((oldpic) => [...oldpic, data.url.toString()]);
           setLoadpic(false);
         })
         .catch((err) => console.log(err));
@@ -161,6 +161,8 @@ const Modal = ({
                         // onChange={(e) => setPics(e.target.files[0])}
                         onChange={(e) => postDetails(e.target.files[0])}
                         ref={fileInput}
+                        multiple
+                  accept=".jpeg, .png, .jpg"
                       />
                     </Form.Group>
                   </div>

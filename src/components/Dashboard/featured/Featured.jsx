@@ -4,43 +4,50 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
-const Featured = () => {
+const Featured = ({costmonth,costday,costbeforemonth}) => {
+  let percent = (costday / costmonth) *100 
+  let textpercent = percent.toString().slice(0,5)
+  let difcost = costmonth - costbeforemonth
   return (
     <div className="featured">
       <div className="top">
-        <h1 className="title">Total Revenume </h1>
+        <h1 className="title">امار فروش </h1>
         <MoreVertIcon fontSize="small" />
       </div>
       <div className="bottom">
         <div className="featuredChart">
-          <CircularProgressbar value={70} text={"70%"} strokeWidth={5} />
+          <CircularProgressbar value={percent} text={textpercent} strokeWidth={5} />
         </div>
-        <p className="title">Total sales made today</p>
-        <p className="amount">$420</p>
+        <p className="title">فروش امروز</p>
+        <p className="amount">{costday}</p>
         <p className="desc">
           {" "}
-          previous trancipt proccing. last paymebt may not be include
+          <span dir="rtl"> {textpercent} سهم فروش امروز نسبت به این ماه است </span>
+          <br/>
+          <span dir="rtl"> {`${difcost < 0 ? `${difcost.toString().slice(1)} کمتر ` : `${difcost} بیشتر`}  فروش داشتی`}</span>
+
         </p>
         <div className="summary">
           <div className="item">
-            <div className="itemTitle">Target</div>
-            <div className="itemResult negetive">
+            <div className="itemTitle">فروش ماه جاری</div>
+            <div className={`itemResult ${costmonth>costbeforemonth ? 'positive' : 'negetive'}`}>
               <KeyboardArrowDownIcon fontSize="small"/>
-              <div className="resultAmount">$12.4k</div>
+              <div className="resultAmount">{costmonth}</div>
             </div>
           </div>
-          <div className="item">
+          {/* <div className="item">
             <div className="itemTitle">Last Week</div>
             <div className="itemResult positive">
               <KeyboardArrowUpOutlinedIcon fontSize="small"/>
               <div className="resultAmount">$12.4k</div>
             </div>
-          </div>
+          </div> */}
           <div className="item">
-            <div className="itemTitle">Last Month</div>
-            <div className="itemResult negetive">
-              <KeyboardArrowDownIcon fontSize="small"/>
-              <div className="resultAmount">$12.4k</div>
+            <div className="itemTitle">ماه گذشته</div>
+            <div className="itemResult">
+            
+              <KeyboardArrowDownIcon fontSize="small" style={{opacity:0}}/>
+              <div className="resultAmount">{costbeforemonth}</div>
             </div>
           </div>
         </div>
